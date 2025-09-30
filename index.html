@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Streaming d'anime en haute qualité. Regardez vos animes préférés gratuitement avec des sous-titres français.">
-    <meta name="keywords" content="anime, streaming, regarder anime, anime français, anime HD">
-    <title>AnimeFlix - Le meilleur du streaming d'anime</title>
+    <meta name="description" content="Moteur de recherche pour Telegram. Trouvez tout et n'importe quoi sur Telegram.">
+    <meta name="keywords" content="telegram, search, moteur de recherche, fichiers, informations">
+    <title>TeleSearch - Votre moteur de recherche pour Telegram</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #0f0f1a;
             color: #ffffff;
             scroll-behavior: smooth;
         }
-        
+
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
@@ -31,7 +31,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -42,39 +42,31 @@
             background: linear-gradient(transparent, #0f0f1a);
             z-index: 1;
         }
-        
+
         .search-box {
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
-        
+
         .search-box:focus-within {
             transform: scale(1.02);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
-        
-        .anime-card {
+
+        .result-card {
             transition: all 0.3s ease;
             transform: translateY(0);
         }
-        
-        .anime-card:hover {
+
+        .result-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
-        
-        .genre-tag {
-            transition: all 0.2s ease;
-        }
-        
-        .genre-tag:hover {
-            transform: scale(1.05);
-        }
-        
+
         .nav-link {
             position: relative;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -85,23 +77,19 @@
             background-color: #6366f1;
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover::after {
             width: 100%;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .fade-in {
             animation: fadeIn 0.8s ease forwards;
         }
-        
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
@@ -111,30 +99,8 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <span class="text-2xl font-bold text-indigo-500">Anime<span class="text-white">Flix</span></span>
+                        <span class="text-2xl font-bold text-indigo-500">Tele<span class="text-white">Search</span></span>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium">Accueil</a>
-                            <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Animes</a>
-                            <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nouveautés</a>
-                            <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Populaires</a>
-                            <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Genres</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
-                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
-                            <i class="fas fa-sign-in-alt mr-2"></i>Connexion
-                        </button>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -143,298 +109,61 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container mx-auto px-4 z-10">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">Vos animes préférés, <span class="text-indigo-500">gratuitement</span></h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto fade-in delay-1">Streaming HD de qualité avec des sous-titres français. Plus de 10 000 épisodes disponibles.</p>
-            
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">Trouvez tout sur <span class="text-indigo-500">Telegram</span></h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto fade-in delay-1">Recherchez des fichiers, des films, des séries, de la musique et bien plus encore.</p>
+
             <!-- Search Box -->
             <div class="max-w-2xl w-full mx-auto fade-in delay-2">
                 <form id="searchForm" class="search-box">
                     <div class="relative flex items-center">
-                        <input type="text" id="searchInput" placeholder="Rechercher un anime..." class="w-full py-4 px-6 rounded-full bg-gray-800 bg-opacity-90 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-16">
+                        <input type="text" id="searchInput" placeholder="Que cherchez-vous ?" class="w-full py-4 px-6 rounded-full bg-gray-800 bg-opacity-90 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-16">
                         <button type="submit" class="absolute right-2 bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-full transition duration-300">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </form>
-                <p class="text-gray-400 text-sm mt-2 text-center">Tapez le nom de l'anime que vous souhaitez regarder</p>
             </div>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
-        <!-- Trending Section -->
-        <section class="mb-16">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold fade-in">Tendances du moment</h2>
-                <a href="#" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium transition duration-300 fade-in delay-1">Voir plus <i class="fas fa-chevron-right ml-1"></i></a>
+        <!-- Search Results Section -->
+        <section id="searchResultsSection" class="mb-16">
+            <div id="resultsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Search results will be dynamically injected here by search.js -->
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Anime Card 1 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-1">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1608889825103-eb5a4a1b0ade?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Demon Slayer" class="w-full h-64 object-cover">
-                        <div class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            HD
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-semibold">Demon Slayer</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-yellow-400 text-sm"><i class="fas fa-star"></i> 9.2</span>
-                                <span class="text-gray-400 text-sm ml-2">24 épisodes</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Action</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Aventure</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Fantasy</span>
-                        </div>
-                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-medium transition duration-300">
-                            <i class="fas fa-play mr-2"></i>Regarder
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Anime Card 2 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1545566239-0ec3b7a6a6a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Attack on Titan" class="w-full h-64 object-cover">
-                        <div class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            HD
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-semibold">Attack on Titan</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-yellow-400 text-sm"><i class="fas fa-star"></i> 9.5</span>
-                                <span class="text-gray-400 text-sm ml-2">75 épisodes</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Action</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Drame</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Horreur</span>
-                        </div>
-                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-medium transition duration-300">
-                            <i class="fas fa-play mr-2"></i>Regarder
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Anime Card 3 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-1">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Jujutsu Kaisen" class="w-full h-64 object-cover">
-                        <div class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            HD
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-semibold">Jujutsu Kaisen</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-yellow-400 text-sm"><i class="fas fa-star"></i> 8.9</span>
-                                <span class="text-gray-400 text-sm ml-2">24 épisodes</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Action</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Fantasy</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Surnaturel</span>
-                        </div>
-                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-medium transition duration-300">
-                            <i class="fas fa-play mr-2"></i>Regarder
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Anime Card 4 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1545566239-0ec3b7a6a6a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="My Hero Academia" class="w-full h-64 object-cover">
-                        <div class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            HD
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-semibold">My Hero Academia</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-yellow-400 text-sm"><i class="fas fa-star"></i> 8.7</span>
-                                <span class="text-gray-400 text-sm ml-2">113 épisodes</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Action</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Comédie</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Super-héros</span>
-                        </div>
-                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-medium transition duration-300">
-                            <i class="fas fa-play mr-2"></i>Regarder
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Anime Card 5 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-3">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1608889825103-eb5a4a1b0ade?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="One Piece" class="w-full h-64 object-cover">
-                        <div class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded">
-                            HD
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                            <h3 class="text-white font-semibold">One Piece</h3>
-                            <div class="flex items-center mt-1">
-                                <span class="text-yellow-400 text-sm"><i class="fas fa-star"></i> 9.0</span>
-                                <span class="text-gray-400 text-sm ml-2">1000+ épisodes</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Action</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Aventure</span>
-                            <span class="genre-tag bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">Comédie</span>
-                        </div>
-                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-medium transition duration-300">
-                            <i class="fas fa-play mr-2"></i>Regarder
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <p id="noResults" class="text-gray-400 text-center hidden">Aucun résultat trouvé. Essayez une autre recherche.</p>
         </section>
-        
-        <!-- New Releases Section -->
-        <section class="mb-16">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold fade-in">Nouveaux épisodes</h2>
-                <a href="#" class="text-indigo-400 hover:text-indigo-300 text-sm font-medium transition duration-300 fade-in delay-1">Voir plus <i class="fas fa-chevron-right ml-1"></i></a>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- New Episode 1 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-1">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tokyo Revengers" class="w-full h-40 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white text-sm font-semibold">Épisode 24</h3>
-                        </div>
-                    </div>
-                    <div class="p-3">
-                        <h3 class="text-white text-sm font-medium mb-1">Tokyo Revengers</h3>
-                        <p class="text-gray-400 text-xs">Ajouté il y a 2 heures</p>
-                    </div>
-                </div>
-                
-                <!-- New Episode 2 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Chainsaw Man" class="w-full h-40 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white text-sm font-semibold">Épisode 12</h3>
-                        </div>
-                    </div>
-                    <div class="p-3">
-                        <h3 class="text-white text-sm font-medium mb-1">Chainsaw Man</h3>
-                        <p class="text-gray-400 text-xs">Ajouté il y a 5 heures</p>
-                    </div>
-                </div>
-                
-                <!-- New Episode 3 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-1">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1608889825103-eb5a4a1b0ade?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Spy x Family" class="w-full h-40 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white text-sm font-semibold">Épisode 25</h3>
-                        </div>
-                    </div>
-                    <div class="p-3">
-                        <h3 class="text-white text-sm font-medium mb-1">Spy x Family</h3>
-                        <p class="text-gray-400 text-xs">Ajouté il y a 1 jour</p>
-                    </div>
-                </div>
-                
-                <!-- New Episode 4 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1545566239-0ec3b7a6a6a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Vinland Saga" class="w-full h-40 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white text-sm font-semibold">Épisode 10</h3>
-                        </div>
-                    </div>
-                    <div class="p-3">
-                        <h3 class="text-white text-sm font-medium mb-1">Vinland Saga</h3>
-                        <p class="text-gray-400 text-xs">Ajouté il y a 1 jour</p>
-                    </div>
-                </div>
-                
-                <!-- New Episode 5 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-3">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Blue Lock" class="w-full h-40 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white text-sm font-semibold">Épisode 22</h3>
-                        </div>
-                    </div>
-                    <div class="p-3">
-                        <h3 class="text-white text-sm font-medium mb-1">Blue Lock</h3>
-                        <p class="text-gray-400 text-xs">Ajouté il y a 2 jours</p>
-                    </div>
-                </div>
-                
-                <!-- New Episode 6 -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden fade-in delay-1">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mob Psycho 100" class="w-full h-40 object-cover">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white text-sm font-semibold">Épisode 12</h3>
-                        </div>
-                    </div>
-                    <div class="p-3">
-                        <h3 class="text-white text-sm font-medium mb-1">Mob Psycho 100</h3>
-                        <p class="text-gray-400 text-xs">Ajouté il y a 2 jours</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Popular Genres Section -->
+
+        <!-- Popular Searches Section -->
         <section>
-            <h2 class="text-2xl md:text-3xl font-bold mb-8 fade-in">Genres populaires</h2>
-            
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 fade-in">Recherches populaires</h2>
+
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <a href="#" class="genre-card bg-indigo-900 hover:bg-indigo-800 rounded-lg p-6 text-center transition duration-300 fade-in delay-1">
-                    <i class="fas fa-fist-raised text-3xl mb-2 text-indigo-300"></i>
-                    <h3 class="text-white font-medium">Action</h3>
+                <a href="#" class="genre-card bg-indigo-900 hover:bg-indigo-800 rounded-lg p-6 text-center transition duration-300 fade-in">
+                    <i class="fas fa-film text-3xl mb-2 text-indigo-300"></i>
+                    <h3 class="text-white font-medium">Films</h3>
                 </a>
-                
-                <a href="#" class="genre-card bg-pink-900 hover:bg-pink-800 rounded-lg p-6 text-center transition duration-300 fade-in delay-2">
-                    <i class="fas fa-heart text-3xl mb-2 text-pink-300"></i>
-                    <h3 class="text-white font-medium">Romance</h3>
+                <a href="#" class="genre-card bg-pink-900 hover:bg-pink-800 rounded-lg p-6 text-center transition duration-300 fade-in">
+                    <i class="fas fa-tv text-3xl mb-2 text-pink-300"></i>
+                    <h3 class="text-white font-medium">Séries</h3>
                 </a>
-                
-                <a href="#" class="genre-card bg-green-900 hover:bg-green-800 rounded-lg p-6 text-center transition duration-300 fade-in delay-1">
-                    <i class="fas fa-hat-wizard text-3xl mb-2 text-green-300"></i>
-                    <h3 class="text-white font-medium">Fantasy</h3>
+                <a href="#" class="genre-card bg-green-900 hover:bg-green-800 rounded-lg p-6 text-center transition duration-300 fade-in">
+                    <i class="fas fa-book text-3xl mb-2 text-green-300"></i>
+                    <h3 class="text-white font-medium">Livres</h3>
                 </a>
-                
-                <a href="#" class="genre-card bg-yellow-900 hover:bg-yellow-800 rounded-lg p-6 text-center transition duration-300 fade-in delay-2">
-                    <i class="fas fa-laugh-squint text-3xl mb-2 text-yellow-300"></i>
-                    <h3 class="text-white font-medium">Comédie</h3>
+                <a href="#" class="genre-card bg-yellow-900 hover:bg-yellow-800 rounded-lg p-6 text-center transition duration-300 fade-in">
+                    <i class="fas fa-gamepad text-3xl mb-2 text-yellow-300"></i>
+                    <h3 class="text-white font-medium">Jeux</h3>
                 </a>
-                
-                <a href="#" class="genre-card bg-red-900 hover:bg-red-800 rounded-lg p-6 text-center transition duration-300 fade-in delay-3">
-                    <i class="fas fa-ghost text-3xl mb-2 text-red-300"></i>
-                    <h3 class="text-white font-medium">Horreur</h3>
+                <a href="#" class="genre-card bg-red-900 hover:bg-red-800 rounded-lg p-6 text-center transition duration-300 fade-in">
+                    <i class="fas fa-music text-3xl mb-2 text-red-300"></i>
+                    <h3 class="text-white font-medium">Musique</h3>
                 </a>
-                
-                <a href="#" class="genre-card bg-purple-900 hover:bg-purple-800 rounded-lg p-6 text-center transition duration-300 fade-in delay-1">
-                    <i class="fas fa-rocket text-3xl mb-2 text-purple-300"></i>
-                    <h3 class="text-white font-medium">Sci-Fi</h3>
+                <a href="#" class="genre-card bg-purple-900 hover:bg-purple-800 rounded-lg p-6 text-center transition duration-300 fade-in">
+                    <i class="fas fa-folder-open text-3xl mb-2 text-purple-300"></i>
+                    <h3 class="text-white font-medium">Autres</h3>
                 </a>
             </div>
         </section>
@@ -442,89 +171,11 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-white text-xl font-bold mb-4">AnimeFlix</h3>
-                    <p class="mb-4">Le meilleur site de streaming d'anime en français. Qualité HD et mise à jour rapide.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Navigation</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition duration-300">Accueil</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">Animes</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">Nouveautés</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">Populaires</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">Genres</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Informations</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition duration-300">À propos</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">DMCA</a></li>
-                        <li><a href="#" class="hover:text-white transition duration-300">Politique de confidentialité</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-white text-lg font-semibold mb-4">Newsletter</h3>
-                    <p class="mb-4">Abonnez-vous pour recevoir les dernières nouveautés.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Votre email" class="bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none w-full">
-                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-r transition duration-300">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-                <p>&copy; 2023 AnimeFlix. Tous droits réservés.</p>
-            </div>
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 TeleSearch. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Script for Search Form -->
-    <script>
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const searchTerm = document.getElementById('searchInput').value.trim();
-            if (searchTerm) {
-                // Encode the search term for URL
-                const encodedTerm = encodeURIComponent(searchTerm);
-                // Redirect to Telegram search (this is just an example, replace with your actual Telegram link)
-                window.location.href = `https://t.me/s/animestreamsearch?q=${encodedTerm}`;
-            }
-        });
-        
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            fadeElements.forEach(element => {
-                fadeInObserver.observe(element);
-            });
-        });
-    </script>
+    <script src="search.js"></script>
 </body>
 </html>
