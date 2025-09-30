@@ -4,39 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsGrid = document.getElementById('resultsGrid');
     const noResults = document.getElementById('noResults');
 
-    // --- Données d'exemple pour la simulation ---
-    const sampleResults = [
-        {
-            title: "Exemple de Film HD",
-            description: "Un film d'action et d'aventure.",
-            thumbnail: "https://images.unsplash.com/photo-1574267432553-8b448192b8c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
-            url: "#" // Lien placeholder
-        },
-        {
-            title: "Série TV - Saison 1",
-            description: "Une série dramatique captivante.",
-            thumbnail: "https://images.unsplash.com/photo-1626814026310-25d416346156?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
-            url: "#"
-        },
-        {
-            title: "Documentaire Nature",
-            description: "Explorez la beauté de notre planète.",
-            thumbnail: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
-            url: "#"
-        },
-        {
-            title: "Jeu PC Complet",
-            description: "Un jeu de stratégie en temps réel.",
-            thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
-            url: "#"
-        },
-        {
-            title: "Album de Musique (FLAC)",
-            description: "Les derniers hits en haute qualité.",
-            thumbnail: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60",
-            url: "#"
-        }
-    ];
+    // L'URL de notre API backend.
+    // On la met dans une constante pour la modifier facilement si besoin.
+    const API_URL = 'http://localhost:5001/api/search';
 
     /**
      * Affiche les résultats de recherche dans la grille.
@@ -57,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.href = result.url;
                 card.target = '_blank';
                 card.classList.add('result-card', 'bg-gray-800', 'rounded-lg', 'overflow-hidden', 'fade-in');
-                card.style.animationDelay = `${Math.random() * 0.3}s`; // Ajoute un petit décalage d'animation
+                card.style.animationDelay = `${Math.random() * 0.3}s`;
 
                 card.innerHTML = `
                     <div class="relative h-64 w-full">
@@ -78,17 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // On connecte le formulaire à la fonction de simulation
-    searchForm.addEventListener('submit', (e) => {
+    // On connecte le formulaire à la fonction de recherche via l'API
+    searchForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const searchTerm = searchInput.value.trim().toLowerCase();
+        const searchTerm = searchInput.value.trim();
 
-        // Simulation : si la recherche est "vide", on n'affiche aucun résultat.
-        // Sinon, on affiche les résultats d'exemple.
-        if (searchTerm === 'vide') {
+        if (!searchTerm) {
             displayResults([]);
-        } else {
-            displayResults(sampleResults);
+            return;
+        }
+
+        try {
+            // On envoie la requête à notre backend
+            const response = await fetch(`${API_URL}?q=${encodeURIComponent(searchTerm)}`);
+
+            if (!response.ok) {
+                // Si le serveur renvoie une erreur (ex: 500), on la lève
+                throw new Error(`Erreur du serveur: ${response.statusText}`);
+            }
+
+            const results = await response.json();
+            displayResults(results);
+
+        } catch (error) {
+            // Si la connexion au serveur échoue, on affiche une erreur dans la console
+            // et on vide les résultats.
+            console.error("Impossible de contacter le serveur de recherche :", error);
+            noResults.textContent = "Erreur de connexion au serveur. Vérifiez qu'il est bien lancé.";
+            displayResults([]);
         }
     });
 });
