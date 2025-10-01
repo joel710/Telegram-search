@@ -1,0 +1,21 @@
+# Fichier d'environnement local - NE PAS PARTAGER
+.env
+backend/.env
+
+# Fichiers de session Telethon
+telegram_session.session
+backend/telegram_session.session
+
+# Fichiers et dossiers Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers de base de données
+*.db
+backend/*.db
+!backend/schema.sql # On ne veut pas ignorer le schéma
+
+# Fichiers de logs
+*.log
